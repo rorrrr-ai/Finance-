@@ -17,7 +17,8 @@
 
   const U = {
     brand: ['خريطة المال', 'Money Map'],
-    nav: [['home', ['الرئيسية', 'Home']], ['institutions', ['المؤسسات', 'Institutions']], ['statements', ['القوائم المالية', 'Statements']], ['real', ['أرقام حقيقية', 'Real figures']],
+    nav: [['home', ['الرئيسية', 'Home']], ['institutions', ['المؤسسات', 'Institutions']], ['directory', ['دليل السعودية', 'Saudi directory']], ['sectors', ['القطاعات ونماذج العمل', 'Sectors & models']],
+      ['statements', ['القوائم المالية', 'Statements']], ['lab', ['مختبر القوائم', 'Statement lab']], ['toolkit', ['أدوات المحلل', 'Analyst toolkit']], ['real', ['أرقام حقيقية', 'Real figures']],
       ['modeling', ['النمذجة المالية', 'Modelling']], ['risk', ['المخاطر', 'Risk']], ['intl', ['المالية الدولية', 'International']], ['careers', ['المسارات المهنية', 'Careers']], ['cfa', ['CFA L1', 'CFA L1']], ['learn', ['راجع واختبر', 'Review & quiz']]],
     illus: ['نسب تقريبية توضيحية لمؤسسة نموذجية، وتختلف من مؤسسة لأخرى.', 'Indicative proportions for a typical institution; they vary from one to another.'],
     foot: ['محتوى تعليمي لطالب مالية، وليس نصيحة استثمارية. الأرقام الحقيقية من تقارير السنة المالية 2025 ومصادرها في صفحة المصادر.', 'Educational content for a finance student, not investment advice. Real figures are from FY2025 reports, listed on the sources page.'],
@@ -69,8 +70,13 @@
         <div class="flow-band" data-cat="mkt"><span>${T(['الأسواق والبنية التحتية', 'Markets & infrastructure'])}</span>${infra.map(link).join('')}</div>
       </div>
       <p class="note">${T(['كل مؤسسة مالية تحل المشكلة نفسها بطريقة مختلفة: تنقل المال ممن يملكه إلى من يحتاجه وتأخذ مقابلاً على المخاطرة التي تتحملها.', 'Every financial institution solves the same problem in a different way: it moves money from those who have it to those who need it, and is paid for the risk it carries.'])}</p>`)}
-    ${sec(T(['ابدأ من هنا', 'Start here']), '', `<div class="grid g4">
+    ${sec(T(['ابدأ من هنا', 'Start here']), '', `<div class="grid g3">
       ${[['statements', 'emerald', ['القوائم الثلاث', 'The three statements'], ['قائمة الدخل، الميزانية، التدفقات النقدية، وأداة تربط بينها.', 'Income statement, balance sheet, cash flow, and a tool that links them.']],
+        ['lab', 'blue', ['مختبر قراءة القوائم', 'Statement reading lab'], ['قوائم كاملة للراجحي والمراعي و Apple مع شرح تحت كل سطر.', 'Full statements for Al Rajhi, Almarai and Apple, with a note under each line.']],
+        ['toolkit', 'coral', ['أدوات المحلل', 'Analyst toolkit'], ['علامات التحذير، ورقة النسب، قراءة صفحة السهم، Bloomberg والمصادر المجانية.', 'Warning signs, the ratio sheet, reading a stock page, Bloomberg and free sources.']],
+        ['sectors', 'gold', ['القطاعات ونماذج العمل', 'Sectors & business models'], ['17 قطاعاً و 20 نموذج عمل مع أشهر الشركات السعودية والعالمية.', '17 sectors and 20 business models with leading Saudi and global companies.']],
+        ['directory', 'cyan', ['دليل القطاع المالي السعودي', 'Saudi financial directory'], ['أكثر من 100 جهة: بنوك، شركات مالية، صناديق، تأمين، استشارات، فنتك.', 'Over 100 entities: banks, investment firms, funds, insurers, advisers, fintech.']],
+        ['careers', 'magenta', ['السلالم الوظيفية الكاملة', 'Full career ladders'], ['من محلل إلى Director و GM و CEO، وخمسة طرق للوصول.', 'From analyst to director, GM and CEO, and five routes there.']],
         ['real', 'gold', ['أرقام حقيقية 2025', 'Real figures, 2025'], ['الراجحي، أرامكو، المراعي، التعاونية، JPMorgan، Apple، BlackRock، PIF.', 'Al Rajhi, Aramco, Almarai, Tawuniya, JPMorgan, Apple, BlackRock, PIF.']],
         ['modeling', 'magenta', ['النمذجة المالية', 'Financial modelling'], ['حاسبات DCF و WACC و LBO وتقييم البنوك والتأمين.', 'DCF, WACC, LBO, bank and insurance calculators.']],
         ['intl', 'cyan', ['المالية الدولية', 'International finance'], ['أسعار الصرف، ربط الريال، ميزان المدفوعات، تعادل الفائدة.', 'Exchange rates, the riyal peg, balance of payments, interest parity.']]
@@ -134,7 +140,7 @@
       <div class="card"><h3>${T(['ما المختلف في قوائمها؟', 'What is different in its statements?'])}</h3><ul class="clean">${i.fs.map(f => `<li>${T(f)}</li>`).join('')}</ul></div>
       <div class="card acc"><h3>${T(['كيف تُقيَّم؟', 'How is it valued?'])}</h3><p>${T(i.val)}</p><a class="btn sm" href="#modeling">${T(['جرّب الحاسبات', 'Try the calculators'])}</a></div></div>`, 's-fs')}
     ${sec(T(['السلّم الوظيفي', 'Career ladder']), '', `<div class="grid g2">
-      <div class="card"><div class="ladder">${i.ladder.map((l, k) => `<div style="--i:${k}">${tm(l)}</div>`).join('')}</div></div>
+      <div class="card">${window.INSTLAD && INSTLAD[i.id] ? `<h3>${tm(LADDERS[INSTLAD[i.id]].t)}</h3>${FM.ladderFull(INSTLAD[i.id])}<a class="btn sm" href="#careers" style="align-self:flex-start">${T(['كل السلالم وطرق الوصول إلى Director و GM', 'All ladders and routes to director and GM'])} ${ARW()}</a>` : `<div class="ladder">${i.ladder.map((l, k) => `<div style="--i:${k}">${tm(l)}</div>`).join('')}</div>`}</div>
       <div class="card"><h3>${T(['شهادات مفيدة', 'Useful credentials'])}</h3><p class="en" style="text-align:start">${i.certs}</p><h3>${T(['أمثلة عالمية', 'Global examples'])}</h3><p class="en" style="text-align:start">${i.ex.g}</p><h3>${T(['في السعودية', 'In Saudi Arabia'])}</h3><p>${T(i.ex.s)}</p></div></div>`, 's-car')}
     ${sec(T(['قصة أزمة', 'A crisis story']), '', `<div class="card" style="--acc:var(--danger);border-color:color-mix(in srgb,var(--danger) 45%,var(--line))"><h3>${T(i.crisis.t)}</h3><p>${T(i.crisis.d)}</p></div>`, 's-cr')}
     ${sec(T(['اختبر نفسك', 'Test yourself']), '', `<div class="grid g2">${i.quiz.map((q, k) => quizHTML(q, i.id + '-' + k)).join('')}</div>`, 's-qz')}
@@ -328,6 +334,8 @@
     <div class="card"><ul class="clean">${SOURCES.map(([t, u]) => `<li><a href="${u}" target="_blank" rel="noopener"><span class="en" style="font-weight:500">${t}</span></a></li>`).join('')}</ul></div>
     <div class="killer" style="border-color:var(--gold);background:color-mix(in srgb,var(--gold) 10%,var(--surface))">${T(['تنبيه: بعض أرقام 2025 أُخذت من ملخصات النتائج المنشورة في مواقع مالية لأن التقارير الأصلية لم تكن متاحة للقراءة المباشرة. راجع التقرير السنوي للشركة قبل استخدام أي رقم في بحث أو واجب.', 'Note: some 2025 figures were taken from published summaries of results on financial sites, because the original reports could not be read directly. Check the company’s annual report before using any number in research or coursework.'])}</div>`;
 
+  const FM = window.FM = { P, T, tm, tmE, fmt, sgn, ARW, ar, sec, head, bars, chipsT, byId, $, $$, v, field, quizHTML, S, U, after: {}, acts: {}, inputs: [] };
+
   /* ---------- router & shell ---------- */
   const route = () => {
     const h = (location.hash || '#home').slice(1);
@@ -346,6 +354,7 @@
     if (h === 'modeling') calcRender(true);
     if (h === 'intl') intlRender();
     if (h === 'learn') learnRender();
+    if (FM.after[h]) FM.after[h]();
     window.scrollTo(0, 0);
   };
   const shell = () => {
@@ -377,6 +386,7 @@
     else if (a === 'fc') { fcI = (fcI + +b.dataset.d + GLOSS.length) % GLOSS.length; fcFlip = false; learnRender(); }
     else if (a === 'know') { const k = GLOSS[fcI][0]; if (S.known[k]) delete S.known[k]; else S.known[k] = 1; store.set('fm-known', S.known); learnRender(); }
     else if (a === 'reset') { S.quiz = {}; store.set('fm-quiz', S.quiz); learnRender(); }
+    else if (FM.acts[a]) FM.acts[a](b);
   });
   document.addEventListener('input', e => {
     const id = e.target.id || '';
@@ -385,6 +395,7 @@
     else if (id === 'g-q') glossRender();
     else if (id.startsWith('cmp-')) cmpRender();
     else if (e.target.closest('#calc-in')) calcRender(false);
+    FM.inputs.forEach(f => f(e));
   });
   $('#btn-lang').addEventListener('click', () => { S.lang = ar() ? 'en' : 'ar'; store.set('fm-lang', S.lang); shell(); route(); });
   $('#btn-theme').addEventListener('click', () => {
@@ -392,5 +403,5 @@
     S.theme = cur === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = S.theme; store.set('fm-theme', S.theme);
   });
   window.addEventListener('hashchange', route);
-  shell(); route();
+  FM.start = () => { shell(); route(); };
 })();

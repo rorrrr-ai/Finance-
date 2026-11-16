@@ -232,6 +232,12 @@ details.qa>div{padding:14px 16px;color:var(--mute)}
 .prog{height:10px;border-radius:99px;background:var(--surface2);overflow:hidden}
 .prog i{display:block;height:100%;background:linear-gradient(90deg,var(--emerald),var(--gold),var(--magenta));border-radius:99px}
 
+.lad{display:flex;flex-direction:column;gap:8px}
+.lad>div{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:2px 12px;align-items:center;padding:10px 14px;border-radius:12px;background:color-mix(in srgb,var(--acc) calc(5% + var(--i)*4%),var(--surface2));border:1px solid var(--line)}
+.lad .n{font-family:var(--f-d);font-weight:700;color:var(--acc);font-size:1.05rem}
+.lad b{font-weight:600;min-width:0}
+.lad small{grid-column:2/-1;color:var(--mute);font-size:.86rem;line-height:1.55}
+tr.hd td{font-family:var(--f-d);font-size:.78rem;letter-spacing:.06em;color:var(--acc);background:var(--surface2);font-weight:600}
 .pagehead{display:grid;gap:12px;padding:22px;border-radius:var(--r2);background:linear-gradient(140deg,color-mix(in srgb,var(--acc) 20%,var(--surface)),var(--surface) 65%);border:1px solid color-mix(in srgb,var(--acc) 45%,var(--line))}
 .pagehead h1{font-size:clamp(1.6rem,4vw,2.4rem)}
 .pagehead .row1{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
@@ -259,4 +265,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding-bloc
 <script src="data-inst1.js"></script>
 <script src="data-inst2.js"></script>
 <script src="data-learn.js"></script>
+<script src="data-lab.js"></script>
+<script src="data-market.js"></script>
 <script src="app.js"></script>
+<script src="app-more.js"></script>
