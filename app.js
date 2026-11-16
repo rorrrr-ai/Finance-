@@ -347,8 +347,8 @@
     else { page = 'home'; html = P.home(); }
     view.innerHTML = html;
     if (cat) document.body.dataset.cat = cat; else delete document.body.dataset.cat;
-    $$('#nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + page));
-    const on = $('#nav a.on'); if (on && on.scrollIntoView) on.scrollIntoView({ block: 'nearest', inline: 'center' });
+    if (FM.navMark) FM.navMark(page); else $$('#nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + page));
+    const on = $('#nav a.on'), nv = $('#nav'); if (on) nv.scrollTo({ left: on.offsetLeft - nv.clientWidth / 2 + on.offsetWidth / 2, behavior: 'instant' });
     if (h === 'institutions') cmpRender();
     if (h === 'statements') lkRender();
     if (h === 'real') realRender();
@@ -356,14 +356,14 @@
     if (h === 'intl') intlRender();
     if (h === 'learn') learnRender();
     if (FM.after[h]) FM.after[h]();
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
   const shell = () => {
     document.documentElement.lang = S.lang;
     document.body.dir = ar() ? 'rtl' : 'ltr';
     if (S.theme) document.documentElement.dataset.theme = S.theme;
     $('#brand-t').textContent = T(U.brand);
-    $('#nav').innerHTML = U.nav.map(([h, t]) => `<a href="#${h}">${T(t)}</a>`).join('');
+    if (FM.navRender) FM.navRender(); else $('#nav').innerHTML = U.nav.map(([h, t]) => `<a href="#${h}">${T(t)}</a>`).join('');
     $('#btn-lang').textContent = ar() ? 'EN' : 'ع';
     $('#foot').innerHTML = `${T(U.foot)} · <a href="#sources">${T(U.src)}</a>`;
   };

@@ -20,7 +20,7 @@
     ['crises', 'coral', ['الأزمات والخط الزمني', 'Crises and timeline'], ['من 1929 إلى 2023، مع انهيار السوق السعودي 2006 ومحطات السوق المالية.', 'From 1929 to 2023, with the 2006 Saudi crash and the market’s milestones.']],
     ['library', 'cyan', ['اقرأ وتابع', 'Read & follow'], ['12 فكرة كبرى، 22 كتاباً مرتبة بالمستوى، ورسائل ونشرات تستحق وقتك.', '12 big ideas, 22 books ordered by level, and letters and newsletters worth your time.']],
     ['playbook', 'emerald', ['خطتك وتوصياتي', 'Your plan and my advice'], ['خطة 12 شهراً، كيف تكتب توصية سهم، ومثال تدريبي بأرقام حقيقية.', 'A 12-month plan, how to write a stock pitch, and a practice case on real numbers.']]
-  ].map(([h, c, t, d]) => `<a class="tile" href="#${h}" style="--acc:var(--${c})"><span class="mono">${ARW()}</span><h3>${T(t)}</h3><small>${T(d)}</small></a>`).join('')}</div>`));
+  ].map(([h, c, t, d]) => `<a class="tile" href="#${h}" style="--acc:var(--${c})"><span class="mono">${ARW()}</span><h3>${T(t)}</h3><small>${T(d)}</small></a>`).join('')}</div>`) + '<!--econ-->');
 
   /* ---------- deals ---------- */
   let dReg = 'all', dType = 'all';
@@ -100,5 +100,4 @@
     <div class="cta"><a class="btn" href="#careers">${T(['السلالم الوظيفية وأسئلة المقابلات', 'Career ladders and interview questions'])}</a><a class="btn" href="#library">${T(['قائمة القراءة', 'The reading list'])}</a></div>`; };
   FM.acts.plan = b => { const k = b.dataset.k; if (plan[k]) delete plan[k]; else plan[k] = 1; mem.set('fm-plan', plan); const y = window.scrollY; $('#view').innerHTML = P.playbook(); window.scrollTo(0, y); };
 
-  FM.start();
 })();
