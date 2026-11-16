@@ -81,6 +81,7 @@
         ['modeling', 'magenta', ['النمذجة المالية', 'Financial modelling'], ['حاسبات DCF و WACC و LBO وتقييم البنوك والتأمين.', 'DCF, WACC, LBO, bank and insurance calculators.']],
         ['intl', 'cyan', ['المالية الدولية', 'International finance'], ['أسعار الصرف، ربط الريال، ميزان المدفوعات، تعادل الفائدة.', 'Exchange rates, the riyal peg, balance of payments, interest parity.']]
       ].map(([h, c, t, d]) => `<a class="tile" href="#${h}" style="--acc:var(--${c})"><span class="mono">${ARW()}</span><h3>${T(t)}</h3><small>${T(d)}</small></a>`).join('')}</div>`)}
+    <!--deep-->
     ${sec(T(['تقدّمك', 'Your progress']), T(['محفوظ في هذا المتصفح', 'Saved in this browser']), `<div class="grid g3">
       <div class="stat"><b>${dq} / ${nq}</b><span>${T(['أسئلة أجبت عنها', 'Questions answered'])}</span></div>
       <div class="stat"><b>${nk} / ${GLOSS.length}</b><span>${T(['مصطلحات حفظتها', 'Terms learned'])}</span></div>

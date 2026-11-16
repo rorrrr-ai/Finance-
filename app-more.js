@@ -178,5 +178,4 @@
   FM.acts.lad = b => { ladK = b.dataset.k; const o = $('#lad-out'); if (!o) return; o.innerHTML = ladOut(); if (b.dataset.jump) { const y = $('#ladders').getBoundingClientRect().top + window.scrollY - ($('header.top').offsetHeight + 12); window.scrollTo({ top: y, behavior: 'smooth' }); } };
   FM.acts.qa2 = b => { qaTag = b.dataset.t; $('#qa-list').innerHTML = qaList(); $$('[data-act="qa2"]').forEach(c => c.setAttribute('aria-pressed', c === b)); };
 
-  FM.start();
 })();
